@@ -1,0 +1,28 @@
+import java.io.*;
+import java.net.*;
+import java.util.*;
+
+public class client11
+{
+  public static void main(String[] args)
+  {
+    try
+    {
+      Socket s = new Socket("localhost",8888);
+      DataOutputStream dos = new DataOutputStream(s.getOutputStream());
+      Scanner ip = new Scanner(System.in);
+      DataInputStream dis = new DataInputStream(s.getInputStream());
+      System.out.print((String)dis.readUTF());
+      String n = ip.next();
+      dos.writeUTF(n);
+      System.out.print((String)dis.readUTF());
+      dis.close();
+      dos.close();
+      s.close();
+    }
+    catch (Exception e)
+    {
+      System.out.println(e);
+    }
+  }
+}
